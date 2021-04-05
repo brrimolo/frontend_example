@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import Menu from './menu/Menu';
+import Home from './home/Home';
+import Cardapio from './cardapio/Cardapio';
+import Reservas from './reservas/Reservas';
+import Carrinho from './carrinho/Carrinho';
+import Login from './login/Login';
+import Rodape from './rodape/Rodape';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
+class App extends Component {
+  render() {
+    return (
+      <BrowserRouter>
+        <div calssName="container-fluid">
+          <Menu />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/cardapio">
+              <Cardapio />
+            </Route>
+            <Route path="/reservas">
+              <Reservas />
+            </Route>
+            <Route path="/carrinho">
+              <Carrinho />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+          </Switch>
+          <Rodape />
+        </div>
+      </BrowserRouter>
+    )
+  }
 }
 
 export default App;
